@@ -60,7 +60,7 @@
 		<div id="hwinfo"></div>
 		<div id="gpuz"></div>
 		<div id="afterburner"></div>
-		<div id="checkboxContainer"><input type="checkbox" id="auotRefreshCheckbox"> Auto Refresh</div>
+		<div id="checkboxContainer"><input type="checkbox" id="autoRefreshCheckbox"> Auto Refresh</div>
 		<script>
 				function AddCommas(str)
 				{
@@ -238,14 +238,17 @@
 
 				fetchMetrics();
 
-				const auotRefreshCheckbox = document.getElementById('auotRefreshCheckbox');
-				auotRefreshCheckbox.addEventListener('change', function() {
+				const autoRefreshCheckbox = document.getElementById('autoRefreshCheckbox');
+
+				autoRefreshCheckbox.addEventListener('change', function() {
 					if (this.checked) {
 						interval = setInterval(fetchMetrics, 1000);
 					} else {
 						clearInterval(interval);
 					}
 				});
+				autoRefreshCheckbox.checked = true;
+				autoRefreshCheckbox.dispatchEvent(new Event('change'));
 		</script>
 	</body>
 </html>
